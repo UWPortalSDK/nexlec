@@ -1,0 +1,70 @@
+<!-- Primary template that will get shown when widget loads -->
+<script type="text/ng-template" id="nexlecMain.html"> 
+    <div>
+        
+        
+        
+        <div  class="item item-icon-right" clickable ng-click="toggleShowTuts()">
+            <div>Display Tutorials</div>
+            
+			<i class="icon icon-check-1" ng-show="showTuts"></i>
+			<i class="icon icon-check-empty" ng-hide="showTuts"></i>
+		</div>
+    </div>
+	<div ng-repeat="item in items" clickable ng-click="showLecList(item)">
+		<div class="item item-icon-right">
+    	    {{item.title}}
+			<i class="icon icon-angle-right"></i>
+        </div>
+	</div>
+</script>
+
+<!-- This template gets shown when user clicks one of the items in the list -->
+<script type="text/ng-template" id="nexlecList.html"> 
+	<!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
+	<div class="item item-divider">{{detailsItem.title}}
+	</div>
+    <div ng-repeat="coursesItem in courses" clickable  ng-click="showLecDetails(coursesItem)">
+       
+    <div class="item item-icon-right">
+        {{coursesItem.loc}} - {{coursesItem.sectionNum}}
+        <h2>
+            {{coursesItem.times}}
+        </h2>
+        <div class="pHighlight">
+            <h3>{{coursesItem.prof}}</h3>
+            <span ng-repeat="i in coursesItem.numStars">
+				<i class="icon icon-star"></i>
+            </span>
+        </div>
+		<i class="icon icon-angle-right"></i>
+	</div>
+        
+    </div>
+</script>
+
+<!-- This template gets shown when user clicks one of the items in the list -->
+<script type="text/ng-template" id="nexlecDetails.html"> 
+    
+    
+    
+	<div><h2>{{lecDetails.subject}} {{lecDetails.catalog_number}}</h2></div>
+    
+    
+    
+    <div><div>
+        
+        <p>Professor: {{coursesItem.prof}}</p>
+        
+        <p>Location: {{coursesItem.loc}}</p>
+        <p>Section: {{coursesItem.sectionNum}}</p>
+        <p>Times: {{coursesItem.times}}</p>
+        <p>Title: {{lecDetails.title}}</p>
+        <p>Class Number: {{lecDetails.class_number}}</p>
+        <p>Enrollment: {{lecDetails.enrollment_total}} / {{lecDetails.enrollment_capacity}}</p>
+        <p>Campus: {{lecDetails.campus}}</p>
+        <p>Waiting: {{lecDetails.waiting_total}} / {{lecDetails.waiting_capacity}}</p>
+        <p>Note: {{lecDetails.note}}</p>
+        </div></div>
+
+</script>
