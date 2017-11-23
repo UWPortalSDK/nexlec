@@ -1,0 +1,69 @@
+<!-- Primary template that will get shown when widget loads -->
+<script type="text/ng-template" id="nexlecMain.html"> 
+    <wr>
+        <widget-row fill clickable ng-click="toggleShowTuts()">
+            <widget-cell fill>Display Tutorials</widget-cell>
+            
+            <widget-icon name="check-1" ng-show="showTuts"></widget-icon>
+            <widget-icon name="check-empty" ng-hide="showTuts"></widget-icon>
+		</widget-row>
+    </wr>
+	<widget-row ng-repeat="item in items" clickable ng-click="showLecList(item)">
+		<widget-cell fill>
+			<span class="itemName">{{item.title}}</span>
+		</widget-cell>
+		<wc>
+			<widget-icon name="angle-right"></widget-icon>
+		</wc>
+	</widget-row>
+</script>
+
+<!-- This template gets shown when user clicks one of the items in the list -->
+<script type="text/ng-template" id="nexlecList.html"> 
+	<!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
+	<wr>
+		<wc><h2>{{detailsItem.title}}</h2></wc> 
+	</wr>
+    <widget-row ng-repeat="coursesItem in courses" clickable  ng-click="showLecDetails(coursesItem)">
+       
+    <widget-cell fill>
+    <wr><wc><h4>{{coursesItem.loc}} - {{coursesItem.sectionNum}}</h4>
+        <h6><widget-icon name="clock"></widget-icon> {{coursesItem.times}}</h6>
+        <div class="pHighlight">
+            {{coursesItem.prof}}
+            <span ng-repeat="i in coursesItem.numStars">
+                <widget-icon name="star"></widget-icon>
+            </span>
+        </div>
+        </wc></wr>
+        </widget-cell>
+        
+		<wc><widget-icon name="angle-right"></widget-icon></wc>
+    </widget-row>
+</script>
+
+<!-- This template gets shown when user clicks one of the items in the list -->
+<script type="text/ng-template" id="nexlecDetails.html"> 
+    
+    
+    
+	<wr><wc><h2>{{lecDetails.subject}} {{lecDetails.catalog_number}}</h2></wc></wr>
+    
+    
+    
+    <wr><wc><div>
+        
+        <p>Professor: {{coursesItem.prof}}</p>
+        
+        <p>Location: {{coursesItem.loc}}</p>
+        <p>Section: {{coursesItem.sectionNum}}</p>
+        <p>Times: {{coursesItem.times}}</p>
+        <p>Title: {{lecDetails.title}}</p>
+        <p>Class Number: {{lecDetails.class_number}}</p>
+        <p>Enrollment: {{lecDetails.enrollment_total}} / {{lecDetails.enrollment_capacity}}</p>
+        <p>Campus: {{lecDetails.campus}}</p>
+        <p>Waiting: {{lecDetails.waiting_total}} / {{lecDetails.waiting_capacity}}</p>
+        <p>Note: {{lecDetails.note}}</p>
+        </div></wc></wr>
+
+</script>
