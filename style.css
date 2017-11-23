@@ -1,0 +1,13 @@
+.label{
+	margin-right:5px;
+}
+
+.widget-icon.icon-star {
+    font-size: 90%;
+    color: yellow;
+}
+
+i.icon-star {
+    font-size: 90%;
+    color: yellow;
+}
